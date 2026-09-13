@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CreatorFlow — professional free tools for creators. Generate hashtags, captions and YouTube titles.">
+<title>CreatorFlow — Creator Tools</title>
+<style>
+:root{--bg:#08090d;--panel:#11131a;--panel2:#171a23;--text:#f7f7fb;--muted:#9da3b4;--line:#252936;--accent:#8b5cf6;--accent2:#6d28d9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+a{text-decoration:none;color:inherit}.nav{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;background:#08090deF;backdrop-filter:blur(14px);z-index:5}
+.brand{font-weight:900;font-size:21px;letter-spacing:-.5px}.brand b{color:#a78bfa}.navlinks{display:flex;gap:25px;color:var(--muted);font-size:14px}.navlinks a:hover{color:white}
+.hero{max-width:1050px;margin:auto;text-align:center;padding:78px 20px 40px}.pill{display:inline-flex;padding:7px 12px;border:1px solid #302a4b;background:#151225;border-radius:999px;color:#c4b5fd;font-size:13px;font-weight:700}
+h1{font-size:clamp(42px,7vw,72px);line-height:1.02;letter-spacing:-3px;margin:20px 0 16px}.gradient{background:linear-gradient(90deg,#fff,#c4b5fd);-webkit-background-clip:text;color:transparent}
+.hero p{max-width:650px;margin:auto;color:var(--muted);font-size:17px;line-height:1.7}.trust{margin-top:18px;color:#72798b;font-size:12px}
+.app{max-width:940px;margin:30px auto 80px;padding:0 18px}.workspace{background:linear-gradient(145deg,#11131a,#0d0f15);border:1px solid var(--line);border-radius:24px;padding:8px;box-shadow:0 25px 80px #0008}
+.toolnav{display:flex;gap:6px;padding:7px;overflow:auto}.tool{white-space:nowrap;flex:1;border:0;background:transparent;color:var(--muted);padding:13px;border-radius:13px;font-weight:800;cursor:pointer}.tool.active{background:#211b36;color:#fff}
+.editor{padding:28px}.eyebrow{color:#a78bfa;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1.2px}.editor h2{margin:8px 0 6px;font-size:25px}.editor .sub{color:var(--muted);font-size:14px;margin-bottom:20px}
+textarea{width:100%;min-height:145px;background:#0a0c11;border:1px solid #2b2f3a;color:white;border-radius:15px;padding:16px;font-size:15px;outline:none;resize:vertical}textarea:focus{border-color:#7651c7;box-shadow:0 0 0 3px #8b5cf61a}
+.controls{display:flex;gap:10px;margin-top:12px}.generate{flex:1;border:0;border-radius:13px;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:900;font-size:15px;cursor:pointer}.clear{padding:14px 18px;border-radius:13px;border:1px solid var(--line);background:var(--panel2);color:#ddd;font-weight:700;cursor:pointer}
+.output{display:none;margin-top:22px;border-top:1px solid var(--line);padding-top:22px}.outputtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.outputtop h3{margin:0;font-size:15px}.copy{border:1px solid #373b48;background:#181b24;color:white;border-radius:9px;padding:8px 12px;cursor:pointer}.result{background:#0a0c11;border:1px solid #292d38;border-radius:14px;padding:16px;line-height:1.8;color:#e7e7ed;white-space:pre-wrap;word-break:break-word}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.mini{border:1px solid var(--line);background:var(--panel);border-radius:17px;padding:21px}.icon{font-size:22px}.mini h3{margin:10px 0 5px;font-size:16px}.mini p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+section.info{max-width:940px;margin:0 auto 70px;padding:0 18px}.infoBox{border:1px solid var(--line);background:var(--panel);border-radius:22px;padding:32px;text-align:center}.infoBox h2{margin:0 0 10px}.infoBox p{color:var(--muted);line-height:1.7}
+footer{border-top:1px solid var(--line);padding:30px 6%;display:flex;justify-content:space-between;color:#73798a;font-size:12px}
+@media(max-width:650px){.navlinks{display:none}.hero{padding-top:55px}h1{letter-spacing:-2px}.editor{padding:20px}.cards{grid-template-columns:1fr}.controls{flex-direction:column}.clear{width:100%}footer{display:block;text-align:center}footer span{display:block;margin-top:8px}}
+</style>
+</head>
+<body>
+<nav class="nav"><a class="brand" href="#">Creator<b>Flow</b></a><div class="navlinks"><a href="#tools">Tools</a><a href="#why">Why CreatorFlow</a></div></nav>
+
+<header class="hero">
+<div class="pill">✦ Free tools for modern creators</div>
+<h1>Create better content.<br><span class="gradient">Grow faster.</span></h1>
+<p>Generate social media hashtags, captions and YouTube title ideas in seconds. Simple, fast and built for creators.</p>
+<div class="trust">No account required • Free to use • Mobile friendly</div>
+</header>
+
+<main class="app" id="tools">
+<div class="workspace">
+<div class="toolnav">
+<button class="tool active" onclick="switchTool('hashtags',this)"># Hashtag Generator</button>
+<button class="tool" onclick="switchTool('captions',this)">✍ Caption Generator</button>
+<button class="tool" onclick="switchTool('titles',this)">▶ YouTube Titles</button>
+</div>
+<div class="editor">
+<div class="eyebrow" id="eyebrow">Social growth</div>
+<h2 id="heading">Hashtag Generator</h2>
+<div class="sub" id="sub">Find relevant hashtags for your post, Reel or Short.</div>
+<textarea id="input" placeholder="Example: Hyderabad street food and travel vlog"></textarea>
+<div class="controls"><button class="generate" onclick="generate()">Generate ideas ✨</button><button class="clear" onclick="clearAll()">Clear</button></div>
+<div class="output" id="output"><div class="outputtop"><h3 id="outTitle">Generated results</h3><button class="copy" onclick="copyText()">Copy</button></div><div class="result" id="result"></div></div>
+</div></div>
+
+<div class="cards">
+<div class="mini"><div class="icon">⚡</div><h3>Instant ideas</h3><p>Turn one topic into ready-to-use content ideas.</p></div>
+<div class="mini"><div class="icon">🎯</div><h3>Creator focused</h3><p>Designed for Instagram, Reels and YouTube creators.</p></div>
+<div class="mini"><div class="icon">🔒</div><h3>Simple & private</h3><p>No login or personal information needed.</p></div>
+</div>
+</main>
+
+<section class="info" id="why"><div class="infoBox"><h2>Everything you need to start creating</h2><p>CreatorFlow gives you quick content ideas without complicated dashboards. Pick a tool, enter your topic and copy the result.</p></div></section>
+<footer><strong>CreatorFlow</strong><span>© 2026 CreatorFlow. Free creator tools.</span></footer>
+
+<script>
+let current='hashtags';
+const tags={
+travel:['#Travel','#TravelVlog','#TravelIndia','#IndiaTravel','#ExploreIndia','#Wanderlust','#TravelReels','#TravelPhotography','#IncredibleIndia','#TravelGram','#Adventure','#ExploreMore'],
+food:['#Food','#Foodie','#FoodVlog','#StreetFood','#FoodLover','#FoodReels','#FoodPhotography','#IndianFood','#FoodieIndia','#Yummy','#FoodGram','#Foodstagram'],
+fitness:['#Fitness','#FitnessMotivation','#Workout','#Gym','#HealthyLifestyle','#FitLife','#WorkoutMotivation','#FitnessReels','#Health','#BodyGoals','#GymLife','#FitnessJourney'],
+gaming:['#Gaming','#Gamer','#GamingCommunity','#Gameplay','#GamingReels','#YouTubeGaming','#GameOn','#Streamer','#GamingLife','#Gamers','#GamingContent','#Play'],
+fashion:['#Fashion','#FashionStyle','#OOTD','#StyleInspo','#FashionReels','#StreetStyle','#MensFashion','#WomensFashion','#OutfitIdeas','#Trending','#FashionBlogger','#Style']
+};
+function switchTool(t,el){
+current=t;document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));el.classList.add('active');
+let d={
+hashtags:['Social growth','Hashtag Generator','Find relevant hashtags for your post, Reel or Short.','Example: Hyderabad street food and travel vlog'],
+captions:['Engagement','Caption Generator','Create a polished caption from a simple description.','Example: Sunset at Charminar with my friends'],
+titles:['YouTube growth','YouTube Title Generator','Get clickable title ideas for your next video.','Example: Best places to visit in Hyderabad']
+}[t];
+document.getElementById('eyebrow').textContent=d[0];document.getElementById('heading').textContent=d[1];document.getElementById('sub').textContent=d[2];document.getElementById('input').placeholder=d[3];document.getElementById('output').style.display='none';
+}
+function generate(){
+let text=document.getElementById('input').value.trim();if(!text){alert('Enter a topic first.');return}
+let result='',title='';
+if(current==='hashtags'){
+let low=text.toLowerCase(),s=tags.travel;if(/food|restaurant|cafe|biryani/.test(low))s=tags.food;else if(/gym|fitness|workout/.test(low))s=tags.fitness;else if(/game|gaming/.test(low))s=tags.gaming;else if(/fashion|outfit|style/.test(low))s=tags.fashion;
+let words=text.replace(/[^a-zA-Z0-9 ]/g,' ').split(/\\s+/).filter(Boolean).slice(0,4);
+let custom=words.map(w=>'#'+w.charAt(0).toUpperCase()+w.slice(1).toLowerCase());
+result=[...new Set([...custom,...s])].slice(0,18).join(' ');title='Your hashtags';
+}else if(current==='captions'){
+result='✨ '+text+'\\n\\nMaking memories, enjoying the moment and creating something worth sharing. ❤️\\n\\n#GoodVibes #Memories #Life';title='Caption idea';
+}else{
+result='1. '+text+': Everything You Need to Know 🔥\\n2. I Tried '+text+' — Here’s What Happened!\\n3. The Ultimate '+text+' Guide for Beginners 🚀\\n4. '+text+' — 10 Things Nobody Tells You\\n5. Before You Try '+text+', Watch This!';title='Title ideas';
+}
+document.getElementById('outTitle').textContent=title;document.getElementById('result').textContent=result;document.getElementById('output').style.display='block';
+}
+function copyText(){navigator.clipboard.writeText(document.getElementById('result').textContent);alert('Copied to clipboard!')}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').style.display='none'}
+</script>
+</body>
+</html>
